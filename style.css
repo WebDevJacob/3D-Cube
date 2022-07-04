@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+body{
+    background-color: #021428;
+}
+
+:root{
+    /* width (and height) of cube side */
+    --w: 200px;
+    --clr-primary: #005CC8;
+}
+
+.wrapper{
+    margin-top: 5vh;
+    min-height: 50vh;
+    display: grid;
+    place-items: center;
+}
+
+.cube-wrap{
+    background-color: #02162c;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--w) * 3);
+    height: calc(var(--w) * 3);
+    perspective: 300px;
+    border: 1px solid var(--clr-primary);
+    border-radius: 0.6rem;
+}
+
+.cube{
+    width: calc(var(--w) * 2);
+    height: calc(var(--w) * 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.side {
+    width: var(--w);
+    height: var(--w);
+    display: grid;
+    place-content: center;
+    outline: 1px solid #000;
+    color: #000;
+    font-weight: bold;
+    position: absolute;
+}
+
+.front{
+    background-color: #a86307cc;
+    transform: rotateY(0deg) translateZ(calc(var(--w) / 2));
+}
+.back{
+    background-color: #cdcd36cc;
+    transform: rotateY(180deg) translateZ(calc(var(--w) / 2));
+}
+
+.top{
+    background-color: #09c813cc;
+    transform: rotateX(90deg) translateZ(calc(var(--w) / 2));
+}
+.bottom{
+    background-color: #0992c8cc;
+    transform: rotateX(-90deg) translateZ(calc(var(--w) / 2));
+}
+
+.left{
+    background-color: #c23dc9cc;
+    transform: rotateY(-90deg) translateZ(calc(var(--w) / 2));
+}
+.right{
+    background-color: #d70909cc;
+    transform: rotateY(90deg) translateZ(calc(var(--w) / 2));
+}
+
+.controls > * {
+    position: absolute;
+}
+
+#rotateX{
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#rotateY{
+    right: -3rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.reset{
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    border: none;
+    background-color: var(--clr-primary);
+}
+
+.instructions{
+    text-align: center;
+    line-height: 2rem;
+}
+
+@media(max-width: 600px){
+    :root{
+        --w: 150px;
+    }
+}
